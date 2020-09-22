@@ -50,7 +50,7 @@ $(document).ready(function () {
         console.log('test');
         var nameService = $('#nameService').children("option:selected").val();
         var namePackage = $('#namePackage').children("option:selected").val();
-        var download = $('#download').val()+" MB";
+        var download = $('#download').val();
         var upload = $('#upload').val();
         var data = $('#data').val();
         var call = $('#call').val();
