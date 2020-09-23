@@ -139,7 +139,7 @@ echo $detail = $_REQUEST['detail'];*/
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h5 class="card-title ">Speed internet</h5>
+                        <h5 class="card-title ">Speed internet / ความไวของ internet</h5>
                     </div>
                 </div>
 
@@ -158,7 +158,7 @@ echo $detail = $_REQUEST['detail'];*/
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h5 class="card-title">Mobile</h5>
+                        <h5 class="card-title">Mobile / มือถือ</h5>
                     </div>
                 </div>
 
@@ -180,7 +180,7 @@ echo $detail = $_REQUEST['detail'];*/
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h5 class="card-title">Telephone</h5>
+                        <h5 class="card-title">Telephone / โทรศัพท์</h5>
                     </div>
                 </div>
                 <div class="form-row">
@@ -199,7 +199,7 @@ echo $detail = $_REQUEST['detail'];*/
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h5 class="card-title">Rounter</h5>
+                        <h5 class="card-title">Rounter / อุปกรณ์ Router </h5>
                     </div>
                 </div>
                 <div class="form-row">
@@ -340,7 +340,7 @@ echo $detail = $_REQUEST['detail'];*/
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">ยืนยันข้อมูล</h5>

@@ -87,10 +87,11 @@ if (!$_SESSION['id']){
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <h5 class="card-title ">Package</h5>
+                    <h5 class="card-title ">Package แต่ละค่าย</h5>
                 </div>
             </div>
             <?php
+        
             $query3 = "SELECT id_package,name_pack FROM package.name_package";
             $result3 = mysqli_query($connect, $query3);
 
@@ -109,7 +110,7 @@ if (!$_SESSION['id']){
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <h5 class="card-title ">Speed internet</h5>
+                    <h5 class="card-title ">Speed internet / ความเร็วของ Internet</h5>
                 </div>
             </div>
 
@@ -142,7 +143,7 @@ if (!$_SESSION['id']){
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <h5 class="card-title">Mobile</h5>
+                    <h5 class="card-title">Mobile / มือถือ</h5>
                 </div>
             </div>
 
@@ -164,7 +165,7 @@ if (!$_SESSION['id']){
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <h5 class="card-title">Telephone</h5>
+                    <h5 class="card-title">Telephone / โทรศัพท์</h5>
                 </div>
             </div>
             <div class="form-row">
@@ -341,7 +342,7 @@ if (!$_SESSION['id']){
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">ยืนยันข้อมูล</h5>
@@ -353,8 +354,8 @@ if (!$_SESSION['id']){
                     ต้องการที่จะบันทึกใช่หรือไม่
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-success savedatadetail">ยืนยัน</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary savedatadetail">ยืนยัน</button>
                 </div>
             </div>
         </div>

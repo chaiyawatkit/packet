@@ -130,7 +130,7 @@ $resultnsv = mysqli_query($connect, $querynsv);
             </center><br>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">การยืนยันข้อมูล</h5>
@@ -143,8 +143,8 @@ $resultnsv = mysqli_query($connect, $querynsv);
                             </div>
                             <div class="modal-footer">
 
-                                <button type="button" class="btn btn-danger closesavedata" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success updateNRT">ยืนยัน</button>
+                                <button type="button" class="btn btn-secondary closesavedata" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary updateNRT">ยืนยัน</button>
                             </div>
                         </div>
                     </div>

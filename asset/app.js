@@ -5,16 +5,18 @@ $(document).ready(function () {
 
     $('.savedata').click(function () {
 
+        console.log('TESTSTSSDD');
         var name = $('#package').children("option:selected").val();
         var name_package = $('#name_package').val();
+        var typepackage = $('#typepackage').children("option:selected").val();
 
-        if (name != "" && name_package != "") {
+        if (name != "" && name_package != "" && typepackage !="") {
             $.ajax({
                 url: "insertpackge.php",
                 method: "post",
-                data: { name: name, name_package: name_package },
+                data: { name: name, name_package: name_package, typepackage:typepackage },
                 success: function (data) {
-                    window.location = "insert_namePackage.php";
+                    //window.location = "insert_namePackage.php";
                 }
             });
         } else {
@@ -207,18 +209,19 @@ $(document).ready(function () {
         var id_pk = $('#id_pk').val();
         var service = $('#service').children("option:selected").val();
         var name_package = $('#name_package').val();
+        var typepackage = $('#typepackage').children("option:selected").val();
         
 
         console.log(id_pk);
         console.log(service);
         console.log(name_package);
-        
+        console.log(typepackage);
 
         if (id_pk != "" && service != "" && name_package != "" ) {
             $.ajax({
                 url: "updatenamepackage.php",
                 method: "post",
-                data: { id_pk: id_pk, service: service, name_package: name_package, },
+                data: { id_pk: id_pk, service: service, name_package: name_package,typepackage:typepackage },
                 success: function (data) {
                 window.location = "insert_namePackage.php";
                 }
@@ -266,11 +269,50 @@ $(document).ready(function () {
         $.ajax({
             url: "showdetail.php",
             method: "post",
-            data: { id: id, },
+            data: { id: id},
             success: function (data) {
                 $('.showdetial').html(data)
             }
         });
+
+    });
+
+
+    $('.selectok').click(function () {
+        console.log('TEST');
+        var name_pack = $('#selectpackage').children("option:selected").val();
+        //var id = $(this).attr('id');
+        console.log(name_pack);
+
+        $.ajax({
+            url: "testshow.php",
+            method: "post",
+            data: { name_pack:name_pack},
+            success: function (data) {
+                $('.testshow').html(data)
+            }
+        });
+
+        
+
+    });
+
+    $('.selectok2').click(function () {
+        console.log('TEST');
+        var name_pack = $('#selectpackage2').children("option:selected").val();
+        //var id = $(this).attr('id');
+        console.log(name_pack);
+
+        $.ajax({
+            url: "testshow2.php",
+            method: "post",
+            data: { name_pack:name_pack},
+            success: function (data) {
+                $('.testshow2').html(data)
+            }
+        });
+
+        
 
     });
 
@@ -340,21 +382,37 @@ $(document).ready(function () {
 
 
     
-    $('#textnaja').DataTable({
+   
 
-        aLengthMenu: [
+        $('#textnaja').DataTable( {
+    
+            
 
-            [10, 25],
-            [10, 25]
-        ],
+            dom: 'Bfrtip',
+            buttons: [
+            'pageLength', 'csv', 'excel', 'pdf','print', 'colvis' ],
+            "lengthMenu": [ [10, 25, -1], ['10','25', "All"] ]
+            
+            
+          
+            
+        } );
 
-          "pageLength": 10
 
+ $('#textnaja555').DataTable( {
+    /*aLengthMenu: [
+        [10, 25],
+        [10, 25]
+    ],
+      "pageLength": 10*/
 
-         });
-         
-        
+      dom: 'Bfrtip',
+            buttons: [
+            'pageLength', 'csv', 'excel', 'pdf','print', 'colvis' ],
+            "lengthMenu": [ [10, 25, -1], ['10','25', "All"] ]
 
+            
+        } );
 
     $('#data_table_router').DataTable({
 
@@ -382,7 +440,8 @@ $(document).ready(function () {
 
 
          });
-    });
+    
+
     $('#viewdatarouter').DataTable({
 
         aLengthMenu: [
@@ -393,5 +452,31 @@ $(document).ready(function () {
 
 
          });
+
+    $('#showpackage1').DataTable({
+
+            aLengthMenu: [
+    
+                [1,3,5,7],
+                [1,3,5,7]
+            ],
+    
+              "pageLength": 3
+    
+             });
     
 
+
+            $('#showpackage2').DataTable({
+
+                aLengthMenu: [
+        
+                    [3,5,7],
+                    [3,5,7]
+                ],
+        
+                  "pageLength": 3
+        
+                 });
+        
+                });

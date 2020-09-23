@@ -22,10 +22,12 @@ if (!$_SESSION['id']) {
     <head>
         <meta http-equiv="Content-Language" content="th" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
         <link rel="stylesheet" href="  https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href=" https://cdn.datatables.net/buttons/1.6.4/css/buttons.bootstrap4.min.css">
         <link rel="stylesheet" href="asset/style.css">
     </head>
 
@@ -93,20 +95,33 @@ if (!$_SESSION['id']) {
 
                 <div class="form-row ">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control is-validated" id="name_package" placeholder="เช่น = 3BB FIBER FULL SPEED" data-toggle="tooltip" data-placement="bottom" title="ใส่ชื่อแพ็ตเกตที่ต้องการบันทึก">
+                        <input type="text" class="form-control" id="name_package" placeholder="เช่น = 3BB FIBER FULL SPEED" data-toggle="tooltip" data-placement="bottom" title="ใส่ชื่อแพ็ตเกตที่ต้องการบันทึก">
 
                     </div>
                 </div>
 
 
+                <div class="form-row ">
+                    <div class="form-group col-md-0">
+                        <h5>ประเภท Package : </h5>
+                    </div>
+                    <div class=" col-md-0">
+                        <select class="form-control" id="typepackage">
+                            <option value="Official Package">Official Package</option>
+                            <option value="Unofficial Package">Unofficial Package</option>
 
+                        </select>
+                    </div>
+                </div>
 
+                <br>
 
 
                 <center>
                     <button type="button" class="btn btn-success gotosave" data-toggle="modal" data-target="#exampleModal">
                         บันทึก
                     </button>
+
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -120,8 +135,8 @@ if (!$_SESSION['id']) {
                                     คุณต้องการเพิ่มข้อมูลหรือไม่
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                                    <button type="button" class="btn btn-success savedata">บันทึก</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                    <button type="button" class="btn btn-primary savedata">บันทึก</button>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +145,7 @@ if (!$_SESSION['id']) {
                 </center><br>
 
 
-                <?php $query1 = "SELECT name_package.id_package, name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service ON name_package.id_service = name_service.id_service ";
+                <?php $query1 = "SELECT name_package.id_package, name_service.name_ser,name_package.name_pack,name_package.type_package FROM name_package LEFT JOIN name_service ON name_package.id_service = name_service.id_service ";
                 $result1 = mysqli_query($connect, $query1); ?>
                 <div class="card">
                     <div class="card-body">
@@ -145,12 +160,13 @@ if (!$_SESSION['id']) {
 
                         <br>
 
-                        <table class=" table table-striped table-hover " id='textnaja'>
+                        <table class=" table table-striped table-hover " id='textnaja555'>
                             <thead class="thead-dark">
                                 <tr>
                                     <th>รหัสแพ็ตเกต</th>
                                     <th>ชื่อผู้ให้บริการ</th>
                                     <th>ชื่อแพ็กเกต</th>
+                                    <th>ประเภท Package</th>
                                     <th>ลบ</th>
                                     <th>แก้ไข</th>
                                     <th>รายละเอียด</th>
@@ -164,6 +180,8 @@ if (!$_SESSION['id']) {
                                         <td> <?php echo $row['id_package']; ?></td>
                                         <td> <?php echo $row['name_ser']; ?></td>
                                         <td> <?php echo $row['name_pack']; ?></td>
+                                        <td> <?php echo $row['type_package']; ?></td>
+
                                         <td><button type="button" class="btn btn-danger deletepackage" data-toggle="modal" data-target=".bd-example-modal-sm" id='<?php echo $row['id_package']; ?>'>ลบ</button></td>
                                         <td><a href="update_namePackage.php?id_package=<?php echo $row['id_package']; ?>" class="btn btn-warning">แก้ไข</a></td>
                                         <td><button type="button" class="btn btn-info  viewdetail" data-toggle="modal" data-target=".bd-example-modal-lg" id='<?php echo $row['id_package']; ?>'>รายละเอียด</a></td>
@@ -211,32 +229,35 @@ if (!$_SESSION['id']) {
                                     <table class="table text-center table-hover table-responsive">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>ลำดับ</th>
-                                                <th>รหัสแพ็กเกต</th>
-                                                <th>ผู้ให้บริการ</th>
-                                                <th>Router</th>
-                                                <th>Download</th>
-                                                <th>Upload</th>
-                                                <th>ข้อมูลมือถือ</th>
-                                                <th>จำนวนการใช้งาน</th>
-                                                <th>จำนวนเค่รื่องที่ใช้</th>
-                                                <th>แต้มโทรศัพท์</th>
-                                                <th>จำนวนการใช้งาน Phone</th>
-                                                <th>จำนวนข้อมูลโทรศัพท์</th>
+                                                <th>ลำดับที่</th>
+                                                <th>ชื่อ ผู้บริการ</th>
+                                                <th>ชื่อ PACKAGE</th>
+                                                <th>ประเภท Package</th>
+                                                <th>ชื่อ ROUTER</th>
+                                                <th>ประเภท ROUTER</th>
+                                                <th>DOWN SPEED/MB</th>
+                                                <th>UP SPEED/MB</th>
+                                                <th>ข้อมูลมอถือ/Gb</th>
+                                                <th>จำนวนการใช้งาน/นาที</th>
+                                                <th>จำนวน sim ที่ใช้งาน</th>
+                                                <th>แต้มในการโทร</th>
+                                                <th>จำนวนการใช้งาน(phone)</th>
+                                                <th>จำนวน NETWORK</th>
                                                 <th>รายละเอียด</th>
-                                                <th>รายละเอียดโปรโมชั่น</th>
+                                                <th>รายละเอียด PROMOTION</th>
                                                 <th>รายละเอียดสัญญา</th>
                                                 <th>ส่วนลด</th>
                                                 <th>ค่าติดตั้ง</th>
                                                 <th>ค่าลงทะเบียน</th>
                                                 <th>ค่าอุปกรณ์</th>
-                                                <th>รายเดือน</th>
-                                                <th>วันเริ่มโปร</th>
-                                                <th>วันสิ้นสุดโปร</th>
+                                                <th>ค่ารายเดือน</th>
+                                                <th>วันเริ่ม PROMOTION</th>
+                                                <th>วันสินสุด PROMOTION</th>
+                                                <th>จัดการลบ</th>
+                                                <th>จัดการแก้ไข</th>
                                             </tr>
                                         </thead>
-                                        <?php
-                                        ?>
+
                                         <tbody class="showdetial">
                                         </tbody>
                                     </table>
@@ -250,15 +271,22 @@ if (!$_SESSION['id']) {
                 </div>
             <?php } ?>
 
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.bootstrap4.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.colVis.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
             <script src="asset/app.js"></script>
+
     </body>
 
     </html>
