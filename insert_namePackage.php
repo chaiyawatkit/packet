@@ -32,6 +32,7 @@ if (!$_SESSION['id']) {
     </head>
 
     <body>
+    <div class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -67,6 +68,7 @@ if (!$_SESSION['id']) {
                 </form>
             </div>
         </nav>
+                    </div>
         <br>
 
         <?php
@@ -75,6 +77,7 @@ if (!$_SESSION['id']) {
 
         ?>
         <form>
+        
             <div class="container">
                 <div class="form-row">
                     <div class="form-group col-0">
@@ -113,7 +116,7 @@ if (!$_SESSION['id']) {
                         </select>
                     </div>
                 </div>
-
+                            
                 <br>
 
 
@@ -123,7 +126,7 @@ if (!$_SESSION['id']) {
                     </button>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">ยืนยันข้อมูล</h5>
@@ -182,7 +185,7 @@ if (!$_SESSION['id']) {
                                         <td> <?php echo $row['name_pack']; ?></td>
                                         <td> <?php echo $row['type_package']; ?></td>
 
-                                        <td><button type="button" class="btn btn-danger deletepackage" data-toggle="modal" data-target=".bd-example-modal-sm" id='<?php echo $row['id_package']; ?>'>ลบ</button></td>
+                                        <td><button type="button" class="btn btn-danger deletepackage " data-toggle="modal" data-target=".bd-example-modal-sm" id='<?php echo $row['id_package']; ?>'>ลบ</button></td>
                                         <td><a href="update_namePackage.php?id_package=<?php echo $row['id_package']; ?>" class="btn btn-warning">แก้ไข</a></td>
                                         <td><button type="button" class="btn btn-info  viewdetail" data-toggle="modal" data-target=".bd-example-modal-lg" id='<?php echo $row['id_package']; ?>'>รายละเอียด</a></td>
                                     </tr>
@@ -226,7 +229,7 @@ if (!$_SESSION['id']) {
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table text-center table-hover table-responsive">
+                                    <table class="table text-center table-hover table-responsive" id="detalsingle">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>ลำดับที่</th>
@@ -253,8 +256,6 @@ if (!$_SESSION['id']) {
                                                 <th>ค่ารายเดือน</th>
                                                 <th>วันเริ่ม PROMOTION</th>
                                                 <th>วันสินสุด PROMOTION</th>
-                                                <th>จัดการลบ</th>
-                                                <th>จัดการแก้ไข</th>
                                             </tr>
                                         </thead>
 

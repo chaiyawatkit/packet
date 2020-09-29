@@ -42,42 +42,43 @@ if (!$_SESSION['id']) {
 
     <body>
 
+        <div class="sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link btn btn-outline-primary" href="admin.php">Home <span class="sr-only ">(current)</span></a>
-                    </li>
-                    <!-- เพิ่มเรื่อง 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link btn btn-outline-primary" href="admin.php">Home <span class="sr-only ">(current)</span></a>
+                        </li>
+                        <!-- เพิ่มเรื่อง 
       <li class="nav-item">
         
       </li>-->
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            การจัดการ
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="menudropdown">
-                            <a class="dropdown-item" href="insert_namePackage.php">รายชื่อ Package</a>
-                            <a class="dropdown-item" href="insert_detailPackage.php">รายละเอียด Package</a>
-                            <a class="dropdown-item" href="insert_namerouter.php">รายชื่อ Rounter</a>
-                            <a class="dropdown-item" href="viewdetailPackage.php">ดูรายละเอียด Package</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="viewdetailPackage.php" class="btn ">ดูรายละเอียด</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <?php while ($rowlogin = mysqli_fetch_array($resultlogin)) { ?>
-                        <h3 class="mr-sm-2"><?php echo $rowlogin['name_login']; ?></h3>
-                    <?php } ?>
-                    <a href="logout.php" class="btn btn-danger mr-sm-2">Logout</a>
-                </form>
-            </div>
-        </nav>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                การจัดการ
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menudropdown">
+                                <a class="dropdown-item" href="insert_namePackage.php">รายชื่อ Package</a>
+                                <a class="dropdown-item" href="insert_detailPackage.php">รายละเอียด Package</a>
+                                <a class="dropdown-item" href="insert_namerouter.php">รายชื่อ Rounter</a>
+                                <a class="dropdown-item" href="viewdetailPackage.php">ดูรายละเอียด Package</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="viewdetailPackage.php" class="btn ">ดูรายละเอียด</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <?php while ($rowlogin = mysqli_fetch_array($resultlogin)) { ?>
+                            <h3 class="mr-sm-2"><?php echo $rowlogin['name_login']; ?></h3>
+                        <?php } ?>
+                        <a href="logout.php" class="btn btn-danger mr-sm-2">Logout</a>
+                    </form>
+                </div>
+            </nav>
+        </div>
         <br>
 
         <?php
@@ -108,7 +109,7 @@ if (!$_SESSION['id']) {
                         <h5>ชื่อ Package </h5>
 
                         <input type="text" value="<?php echo $row['name_pack'];
-                                                 ?>" class="form-control" id="name_package" placeholder="เช่น = 3BB FIBER FULL SPEED" require>
+                                                    ?>" class="form-control" id="name_package" placeholder="เช่น = 3BB FIBER FULL SPEED" require>
                     </div>
 
                 </div>
@@ -119,7 +120,8 @@ if (!$_SESSION['id']) {
                     <div class="form-group col-md-0">
                         <select class="form-control" name="typepackage" id="typepackage">
 
-                            <option value="<?php echo $row['type_package'];  ?>" selected disabled hidden><?php echo $row['type_package']; }?></option>
+                            <option value="<?php echo $row['type_package'];  ?>" selected disabled hidden><?php echo $row['type_package'];
+                                                                                                        } ?></option>
                             <option value="Official Package">Official Package</option>
                             <option value="Unofficial Package">Unofficial Package</option>
 
@@ -133,7 +135,7 @@ if (!$_SESSION['id']) {
                         แก้ไข
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">ยืนยันข้อมูล</h5>
@@ -157,7 +159,7 @@ if (!$_SESSION['id']) {
 
 
 
-                <?php $query1 = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service ON name_package.id_service = name_service.id_service ";
+                <?php $query1 = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack,name_package.type_package FROM name_package LEFT JOIN name_service ON name_package.id_service = name_service.id_service ";
                 $result1 = mysqli_query($connect, $query1); ?>
 
 
@@ -180,6 +182,7 @@ if (!$_SESSION['id']) {
                                     <th scope="col">ลำดับ</th>
                                     <th scope="col">ชื่อผู้ให้บริการ</th>
                                     <th scope="col">ชื่อ Package</th>
+                                    <th>ประเภท Package</th>
                                     <th scope="col">ลบ</th>
                                 </tr>
                             </thead>
@@ -190,6 +193,7 @@ if (!$_SESSION['id']) {
                                         <td> <?php echo $row['id_package']; ?></td>
                                         <td> <?php echo $row['name_ser']; ?></td>
                                         <td> <?php echo $row['name_pack']; ?></td>
+                                        <td> <?php echo $row['type_package']; ?></td>
                                         <td><button type="button" class="btn btn-danger deleteupdatepackage" id=<?php echo $row['id_package']; ?> data-toggle="modal" data-target=".bd-example-modal-sm">ลบ</button></td>
                                     <?php  } ?>
                                     </tr>

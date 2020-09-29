@@ -43,104 +43,41 @@ require 'connect.php';
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-  
-
- 
-
 
 </head>
+<?php
+
+$query = "SELECT * FROM package.name_package";
+$result = mysqli_query($connect, $query);
+
+
+?>
 
 <body>
-<?php 
 
-$querytrue = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service
-ON name_package.id_service=name_service.id_service WHERE name_package.id_service=5050";
-$resulttrue = mysqli_query($connect,$querytrue);
 
-$queryais = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service
-ON name_package.id_service=name_service.id_service WHERE name_package.id_service=5060";
-$resultais = mysqli_query($connect,$queryais);
-
-$query3bb = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service
-ON name_package.id_service=name_service.id_service WHERE name_package.id_service=5070";
-$result3bb = mysqli_query($connect,$query3bb);
-
-$querycat = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service
-ON name_package.id_service=name_service.id_service WHERE name_package.id_service=5080";
-$resultcat = mysqli_query($connect,$querycat);
-
-$querytot = "SELECT name_package.id_package,name_service.name_ser,name_package.name_pack FROM name_package LEFT JOIN name_service
-ON name_package.id_service=name_service.id_service WHERE name_package.id_service=5080";
-$resulttot = mysqli_query($connect,$querytot);
-?>
   <div class="container">
-  <div class="row">
-  <div class="col-sm-5">
-    <select class="form-control">
-    <optgroup label="True Package">
+    <div class="row">
+      <div class="col-5">
+        <select class="form-control" name="selectpackage555" id="selectpackage555">
 
-      <?php while($rowtrue = mysqli_fetch_array($resulttrue)){?>
-      <option>
-        <?php echo $rowtrue['name_pack'];?>
-      </option>
-      <?php } ?>
-    </optgroup>
+        <?php while ($row = mysqli_fetch_array($result)) { ?>
+            <option value="<?php echo $row['id_package'];?>"><?php echo $row['name_pack']; }
+                   ?></option>
 
-    <optgroup label="AIS Package">
-  
-    <?php while($rowais = mysqli_fetch_array($resultais)){?>
-      <option>
-        <?php echo $rowais['name_pack'];?>
-      </option>
-      <?php } ?>
-  
-  </optgroup>
-
-  <optgroup label="3BB">
-  
-    <?php while($row3bb = mysqli_fetch_array($result3bb)){?>
-      <option>
-        <?php echo $row3bb['name_pack'];?>
-      </option>
-      <?php } ?>
-  
-  </optgroup>
-
-  <optgroup label="cat">
-  
-    <?php while($rowcat = mysqli_fetch_array($resultcat)){?>
-      <option>
-        <?php echo $rowcat['name_pack'];?>
-      </option>
-      <?php } ?>
-  
-  </optgroup>
-
-  <optgroup label="tot">
-  
-    <?php while($rowtot = mysqli_fetch_array($resulttot)){?>
-      <option>
-        <?php echo $rowtot['name_pack'];?>
-      </option>
-      <?php } ?>
-  
-  </optgroup>
-      
-    </select>
-  </div>
-</div>
-
-
+        </select>
+        <button type="submit" class="btn btn-info view555" >ตกลง</button>
+      </div>
+    </div>
   </div>
 
 
 </body>
-
-<script  src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-<script src="asset/app.js" ></script>
+<script src="asset/app.js"></script>
 
 </html>

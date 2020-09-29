@@ -14,7 +14,7 @@ require 'connect.php';
  echo $call_phone = $_POST['call_phone'];
  echo $network = $_POST['network'];
  echo $detail = $_POST['detail'];
-echo $pomotionDetail = $_POST['pomotionDetail'];
+ echo $pomotionDetail = $_POST['pomotionDetail'];
  echo $contract = $_POST['contract'];
  echo $discount = $_POST['discount'];
  echo $costInstall = $_POST['costInstall'];

@@ -16,7 +16,7 @@ $(document).ready(function () {
                 method: "post",
                 data: { name: name, name_package: name_package, typepackage:typepackage },
                 success: function (data) {
-                    //window.location = "insert_namePackage.php";
+                    window.location = "insert_namePackage.php";
                 }
             });
         } else {
@@ -390,11 +390,14 @@ $(document).ready(function () {
 
             dom: 'Bfrtip',
             buttons: [
-            'pageLength', 'csv', 'excel', 'pdf','print', 'colvis' ],
-            "lengthMenu": [ [10, 25, -1], ['10','25', "All"] ]
-            
-            
-          
+            'pageLength', 'csv', 'excel', 'pdf',
+            {extend: 'print' ,essageTop: 'This print was produced using the Print button for DataTables'}, 
+            'colvis' ],
+            "lengthMenu": [ [10, 25, -1], ['10','25', "All"] ,
+               
+           ]
+           
+    
             
         } );
 
@@ -408,19 +411,21 @@ $(document).ready(function () {
 
       dom: 'Bfrtip',
             buttons: [
-            'pageLength', 'csv', 'excel', 'pdf','print', 'colvis' ],
+            'pageLength', 'csv', 'excel', 'pdf','print', 'colvis',],
             "lengthMenu": [ [10, 25, -1], ['10','25', "All"] ]
+            
+            
+            
 
             
-        } );
+} );
 
     $('#data_table_router').DataTable({
 
-        aLengthMenu: [
-            [10, 25],
-            [10, 25]
-        ],
-          "pageLength": 10
+        dom: 'Bfrtip',
+            buttons: [
+            'pageLength', 'csv', 'excel', 'pdf','print', 'colvis',],
+            "lengthMenu": [ [10, 25, -1], ['10','25', "All"] ]
 
 
 
@@ -480,3 +485,26 @@ $(document).ready(function () {
                  });
         
                 });
+               
+
+
+
+    $('.view555').click(function () {
+
+    console.log("test");
+    var name_pack = $('#selectpackage555').children("option:selected").val();
+    console.log("Result = " + name_pack);
+
+    $.ajax({
+        url: "testshow.php",
+        method: "post",
+        data: {  name_pack: name_pack },
+        success: function (data) {
+            window.location = "testshow.php";
+
+        }
+    });
+
+});
+            
+               
