@@ -9,11 +9,11 @@ if (!$_SESSION['id']) {
     echo "<script>";
     echo "alert('มีบางอย่างไม่ถูกต้อง')";
     echo "</script>";
-    echo "<a href='index.php'>กลับไปหน้าหลัก</a>";
+    echo "Refresh:0; url=index.php";
 
     //Header("Location: index.php");
 
-} else {
+}else {
     $id = $_SESSION['id'];
     $querylogin = "SELECT id_user,name_login FROM login WHERE id_user=$id";
     $resultlogin = mysqli_query($connect, $querylogin);
@@ -27,12 +27,6 @@ if (!$_SESSION['id']) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href=" https://cdn.datatables.net/buttons/1.6.4/css/buttons.bootstrap4.min.css">
-
-
-
-
-
-
 
         <link rel="stylesheet" href="asset/style.css">
 

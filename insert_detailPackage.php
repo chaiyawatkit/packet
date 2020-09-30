@@ -3,16 +3,24 @@ session_start();
 //include('checksession.php');
 require 'connect.php';
 
+$status = $_SESSION['userstatus']; 
 if (!$_SESSION['id']) {
 
     echo "<script>";
-    echo "alert('มีบางอย่างไม่ถูกต้อง')";
+    echo "alert('มีบางอย่างไม่ถูกต้องเนื่องจากไม่ได้มีการ login เข้ามา')";
     echo "</script>";
-    echo "<a href='index.php'>กลับไปหน้าหลัก</a>";
+    header("Refresh:0; url=index.php");
 
     //Header("Location: index.php");
 
-} else {
+} else if($status == 'user'){
+    echo "<script>";
+    echo "alert('ไม่มีสิทธิ์เข้าใช้งาน')";
+    echo "</script>";
+
+    header("Refresh:0; url=index.php");
+
+}else {
     $id = $_SESSION['id'];
     $querylogin = "SELECT id_user,name_login FROM login WHERE id_user=$id";
     $resultlogin = mysqli_query($connect, $querylogin);

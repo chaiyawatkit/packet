@@ -1,6 +1,9 @@
 <?php session_start();
 require 'connect.php';
-if (!$_SESSION['id']) {
+
+ $status = $_SESSION['userstatus']; 
+
+if (!$_SESSION['id'] ) {
 
     echo "<script>";
     echo "alert('มีบางอย่างไม่ถูกต้อง')";
@@ -8,8 +11,19 @@ if (!$_SESSION['id']) {
     echo "<a href='index.php'>กลับไปหน้าหลัก</a>";
 
     Header("Location: index.php");
-} else {
+
+} else if($status == 'user'){
+    echo "<script>";
+    echo "alert('ไม่มีสิทธิ์เข้าใช้งาน')";
+    echo "</script>";
+    echo "<a href='index.php'>กลับไปหน้าหลัก</a>";
+
+    header("Refresh:0; url=index.php");
+
+}else {
+
     $id = $_SESSION['id'];
+
     $querylogin = "SELECT id_user,name_login FROM login WHERE id_user=$id";
     $resultlogin = mysqli_query($connect, $querylogin);
 ?>
