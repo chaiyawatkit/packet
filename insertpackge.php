@@ -11,7 +11,11 @@ $sql = "INSERT INTO name_package  VALUES ('', '$name', '$name_package','$type_pa
 $result = mysqli_query($connect, $sql);
 
 if($result){
-header('Location: insert_namePackage.php');
+    echo '<script>';
+    echo 'alert("เพิ่มข้อมูลสำเร็จ")';
+    echo '</script>';
+    header("Refresh:0; url=insert_namePackage.php");
+
 }else {
     echo '<script>';
     echo 'alert("ห้ามเว้นว่าง")';

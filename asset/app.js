@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $('.savedata').click(function () {
 
-        console.log('TESTSTSSDD');
+        
         var name = $('#package').children("option:selected").val();
         var name_package = $('#name_package').val();
         var typepackage = $('#typepackage').children("option:selected").val();
@@ -16,15 +16,16 @@ $(document).ready(function () {
                 method: "post",
                 data: { name: name, name_package: name_package, typepackage:typepackage },
                 success: function (data) {
+
                     window.location = "insert_namePackage.php";
+
                 }
+
             });
         } else {
             alert("ห้ามเว้นว่างนะครับ\nกรุณาใส่ข้อมูลให้ครบถ้วน")
         }
     });
-
-
 
     $('.savedata1').click(function () {
 

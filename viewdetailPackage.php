@@ -13,7 +13,7 @@ if (!$_SESSION['id']) {
 
     //Header("Location: index.php");
 
-}else {
+} else {
     $id = $_SESSION['id'];
     $querylogin = "SELECT id_user,name_login FROM login WHERE id_user=$id";
     $resultlogin = mysqli_query($connect, $querylogin);
@@ -31,39 +31,40 @@ if (!$_SESSION['id']) {
         <link rel="stylesheet" href="asset/style.css">
 
     <body>
+        <div class="sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link btn btn-outline-primary" href="admin.php">Home <span class="sr-only ">(current)</span></a>
-                    </li>
-                    <!-- เพิ่มเรื่อง 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link btn btn-outline-primary" href="admin.php">Home <span class="sr-only ">(current)</span></a>
+                        </li>
+                        <!-- เพิ่มเรื่อง 
       <li class="nav-item">
         
       </li>-->
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            การจัดการ
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="menudropdown">
-                            <a class="dropdown-item" href="insert_namePackage.php">รายชื่อ Package</a>
-                            <a class="dropdown-item" href="insert_detailPackage.php">รายละเอียด Package</a>
-                            <a class="dropdown-item" href="insert_namerouter.php">รายชื่อ Rounter</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                การจัดการ
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menudropdown">
+                                <a class="dropdown-item" href="insert_namePackage.php">รายชื่อ Package</a>
+                                <a class="dropdown-item" href="insert_detailPackage.php">รายละเอียด Package</a>
+                                <a class="dropdown-item" href="insert_namerouter.php">รายชื่อ Rounter</a>
 
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <?php while ($rowlogin = mysqli_fetch_array($resultlogin)) { ?>
-                        <h3 class="mr-sm-2"><?php echo $rowlogin['name_login']; ?></h3>
-                    <?php } ?>
-                    <a href="logout.php" class="btn btn-danger mr-sm-2">Logout</a>
-                </form>
-            </div>
-        </nav>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <?php while ($rowlogin = mysqli_fetch_array($resultlogin)) { ?>
+                            <h3 class="mr-sm-2"><?php echo $rowlogin['name_login']; ?></h3>
+                        <?php } ?>
+                        <a href="logout.php" class="btn btn-danger mr-sm-2">Logout</a>
+                    </form>
+                </div>
+            </nav>
+        </div>
         <br>
 
         <?php
@@ -81,6 +82,7 @@ if (!$_SESSION['id']) {
 
             </div><br>
             <table class=" table table-bordered table-light text-center table-hover table-striped table-responsive " id='textnaja' width="100%">
+
                 <thead class="thead-dark">
                     <tr>
                         <th>ลำดับที่</th>
@@ -110,6 +112,7 @@ if (!$_SESSION['id']) {
                         <th>จัดการลบ</th>
                         <th>จัดการแก้ไข</th>
                     </tr>
+
                 </thead>
                 <tbody>
 
@@ -141,8 +144,6 @@ if (!$_SESSION['id']) {
                             <td><?php echo $row['date_end_pro']; ?></td>
                             <td><button class="btn btn-danger deletedetail" data-toggle="modal" data-target=".bd-example-modal-sm" id=<?php echo $row['id_log']; ?>>ลบ</button></td>
                             <td><a href="update_detailPackage.php?id_log=<?php echo $row['id_log']; ?>" class="btn btn-warning">แก้ไข</td>
-
-
                         <?php } ?>
                         </tr>
                 </tbody>
@@ -170,26 +171,10 @@ if (!$_SESSION['id']) {
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
     </body>
-
+<br>
 <?php } ?>
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
@@ -203,9 +188,6 @@ if (!$_SESSION['id']) {
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.colVis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-
-
 <script src="asset/app.js"></script>
 
     </html>
