@@ -2,10 +2,10 @@
 include('checksession.php');
 require 'connect.php';
 
-echo $id_router = $_POST['id_router'];
-echo $nameService = $_POST['nameService'];
-echo $nameRouter = $_POST['nameRouter'];
-echo $typeRouter = $_POST['typeRouter'];
+ $id_router = $_POST['id_router'];
+ $nameService = $_POST['nameService'];
+ $nameRouter = $_POST['nameRouter'];
+ $typeRouter = $_POST['typeRouter'];
 
 $query = " UPDATE package.name_rounter SET id_service=$nameService,detail_rounter='$nameRouter',type_rounter='$typeRouter' WHERE id_rounter=$id_router";
 
