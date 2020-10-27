@@ -2,7 +2,7 @@
 session_start();
 //include('checksession.php');
 require 'connect.php';
-$status = $_SESSION['userstatus']; 
+$status = $_SESSION['userstatus'];
 if (!$_SESSION['id']) {
 
     echo "<script>";
@@ -12,14 +12,14 @@ if (!$_SESSION['id']) {
 
     //Header("Location: index.php");
 
-} else if($status == 'user'){
+} else if ($status == 'user') {
     echo "<script>";
     echo "alert('ไม่มีสิทธิ์เข้าใช้งาน')";
     echo "</script>";
     echo "<a href='index.php'>กลับไปหน้าหลัก</a>";
 
     header("Refresh:0; url=index.php");
-}else {
+} else {
     $id = $_SESSION['id'];
     $querylogin = "SELECT id_user,name_login FROM login WHERE id_user=$id";
     $resultlogin = mysqli_query($connect, $querylogin);

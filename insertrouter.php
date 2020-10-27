@@ -1,7 +1,7 @@
 <?php 
 include('checksession.php');
 require 'connect.php';
-echo  $_nameService=$_POST['nameService'];
+echo $_nameService=$_POST['nameService'];
 echo $_nameRouter=$_POST['nameRouter'];
 echo $_typeRouter = $_POST['typeRouter'];
 

@@ -2,7 +2,7 @@
 session_start();
 //include('checksession.php');
 require 'connect.php';
- $status = $_SESSION['userstatus']; 
+$status = $_SESSION['userstatus'];
 
 if (!$_SESSION['id']) {
 
@@ -13,15 +13,14 @@ if (!$_SESSION['id']) {
 
     //Header("Location: index.php");
 
-} else if($status == 'user'){
+} else if ($status == 'user') {
     echo "<script>";
     echo "alert('ไม่มีสิทธิ์เข้าใช้งาน')";
     echo "</script>";
     echo "<a href='index.php'>กลับไปหน้าหลัก</a>";
 
     header("Refresh:0; url=index.php");
-
-}else {
+} else {
 
     $id = $_SESSION['id'];
     $querylogin = "SELECT id_user,name_login FROM login WHERE id_user=$id";
@@ -290,73 +289,73 @@ echo $detail = $_REQUEST['detail'];*/
                             <p>ส่วนลด : </p>
                         </div>
                         <div class="form-group col-md-0">
-                        <select name="discount" id="discount" class="form-control">
-                            <option value="<?php echo $row1['discount']; ?>"><?php echo $row1['discount']; ?></option>
-                            <option value="0%">0%</option>
-                            <option value="5%">5%</option>
-                            <option value="10%">10%</option>
-                            <option value="15%">15%</option>
-                            <option value="20%">20%</option>
-                            <option value="25%">25%</option>
-                            <option value="30%">30%</option>
-                            <option value="35%">35%</option>
-                            <option value="40%">40%</option>
-                            <option value="45%">45%</option>
-                            <option value="50%">50%</option>
-                            <option value="55%">55%</option>
-                            <option value="60%">60%</option>
-                            <option value="65%">65%</option>
-                            <option value="70%">70%</option>
-                            <option value="75%">75%</option>
-                            <option value="80%">80%</option>
-                            <option value="85%">85%</option>
-                            <option value="90%">90%</option>
-                            <option value="95%">95%</option>
-                            <option value="100%">100%</option>
+                            <select name="discount" id="discount" class="form-control">
+                                <option value="<?php echo $row1['discount']; ?>"><?php echo $row1['discount']; ?></option>
+                                <option value="0%">0%</option>
+                                <option value="5%">5%</option>
+                                <option value="10%">10%</option>
+                                <option value="15%">15%</option>
+                                <option value="20%">20%</option>
+                                <option value="25%">25%</option>
+                                <option value="30%">30%</option>
+                                <option value="35%">35%</option>
+                                <option value="40%">40%</option>
+                                <option value="45%">45%</option>
+                                <option value="50%">50%</option>
+                                <option value="55%">55%</option>
+                                <option value="60%">60%</option>
+                                <option value="65%">65%</option>
+                                <option value="70%">70%</option>
+                                <option value="75%">75%</option>
+                                <option value="80%">80%</option>
+                                <option value="85%">85%</option>
+                                <option value="90%">90%</option>
+                                <option value="95%">95%</option>
+                                <option value="100%">100%</option>
 
-                        </select>
+                            </select>
 
 
                         </div>
-                        
 
-                    <br>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                <input required type="number" class="form-control" placeholder="ค่าติดตั้ง" id="costInstall" value="<?php echo $row1['price_setup']; ?>">
-            </div>
-            <div class="form-group col-md-3">
-                <input type="number" class="form-control" placeholder="ค่าลงทะเบียน" id="costRegister" value="<?php echo $row1['price_register']; ?>">
-            </div>
-            <div class="form-group col-md-3">
-                <input type="number" class="form-control" placeholder="ค่าอุปกรณ์" id="costEquipment" value="<?php echo $row1['price_equip']; ?>">
-            </div>
-            <div class="form-group col-md-3">
-                <input required type="number" class="form-control" placeholder="ค่ารายเดือน" id="costMonth" value="<?php echo $row1['price_month']; ?>">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <h5 class="card-title">ระยะเวลาโปรโมชั่น</h5>
-            </div>
-        </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input required type="date" class="form-control" id="dateStart" value="<?php echo $row1['date_start_pro']; ?>" name="dateStart">
-            </div>
-            <div class="form-group col-md-6">
-                <input required type="date" class="form-control" id="dateEnd" value="<?php echo $row1['date_end_pro']; ?>" name="dateEnd">
-            </div>
-        </div>
-        <center>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                บันทึก
-            </button>
-            <button type="reset" class="btn btn-danger">ยกเลิก</button>
-        </center>
-        </form>
+                        <br>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <input required type="number" class="form-control" placeholder="ค่าติดตั้ง" id="costInstall" value="<?php echo $row1['price_setup']; ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="number" class="form-control" placeholder="ค่าลงทะเบียน" id="costRegister" value="<?php echo $row1['price_register']; ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="number" class="form-control" placeholder="ค่าอุปกรณ์" id="costEquipment" value="<?php echo $row1['price_equip']; ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input required type="number" class="form-control" placeholder="ค่ารายเดือน" id="costMonth" value="<?php echo $row1['price_month']; ?>">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <h5 class="card-title">ระยะเวลาโปรโมชั่น</h5>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input required type="date" class="form-control" id="dateStart" value="<?php echo $row1['date_start_pro']; ?>" name="dateStart">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input required type="date" class="form-control" id="dateEnd" value="<?php echo $row1['date_end_pro']; ?>" name="dateEnd">
+                        </div>
+                    </div>
+                    <center>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            บันทึก
+                        </button>
+                        <button type="reset" class="btn btn-danger">ยกเลิก</button>
+                    </center>
+            </form>
 
         </div>
 
@@ -381,6 +380,11 @@ echo $detail = $_REQUEST['detail'];*/
         </div><?php } ?>
 
 <?php } ?>
+<center>
+    <br>
+    <h6>Copyright © คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช V.5.2.1</h6>
+    <br>
+</center>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
