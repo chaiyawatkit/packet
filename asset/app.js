@@ -275,7 +275,6 @@ $(document).ready(function () {
                 $('.showdetial').html(data)
             }
         });
-
     });
 
 
@@ -379,13 +378,30 @@ $(document).ready(function () {
     });
 
 
+$('#nameService').change(function (){
 
+    var id_service = $(this).val();
+    if(id_service != ""){
+        $.ajax({
+            type:"post",
+            url:"dropdownlist.php",
+            data:{id_service:id_service},
+            success:function(response){
+                var resp = $.trim(response);
+                $('#namePackage').html(resp);
+            }
+        });
+    }else {
+        $('#namePackage').html('<option>--select option--</option>');
+    }
+
+});
 
 
     
    
 
-        $('#textnaja').DataTable( {
+   $('#textnaja').DataTable( {
     
             
 

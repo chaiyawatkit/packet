@@ -2,5 +2,9 @@
 <?php
 session_start();
 session_destroy();
-header("Location: index.php ");	
+
+
+echo "<script>alert('ได้ทำการ logout ออกจากระบบเรียบร้อย')</script>";
+header("Refresh:0; url=index.php");	
+
 ?>
